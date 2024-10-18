@@ -1,0 +1,35 @@
+Next.js
+
+Criando projeto
+
+npx create-next-app@14
+
+project named: code-connect
+Typescript: No
+ESLint: No
+Tailwind CSS: No
+'src/' directory: Yes
+App Router: Yes
+customize the default import alias: No
+
+---------------------------------------
+
+Inicializando aplicação
+
+npm run dev
+
+disponível em: http://localhost:3000
+
+-----------------------------------------
+
+Figma
+
+https://www.figma.com/community/file/1419095591410618806
+
+------------------------------------------
+
+Conceitos do Next.js
+
+https://www.alura.com.br/artigos/next-js
+
+------------------------------------------
