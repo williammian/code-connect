@@ -33,3 +33,13 @@ Conceitos do Next.js
 https://www.alura.com.br/artigos/next-js
 
 ------------------------------------------
+
+Como podemos descrever o SSR e suas características em uma aplicação Next.js?
+
+O SSR permite que o conteúdo seja renderizado no lado do servidor, melhorando a indexação 
+pelos motores de busca e reduzindo o tempo de carregamento para o usuário final.
+
+O SSR efetivamente melhora a performance ao reduzir o trabalho de renderização no lado do cliente 
+e otimiza o SEO ao permitir que os motores de busca indexem o conteúdo já processado.
+
+--------------------------------------------
