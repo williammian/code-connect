@@ -1,0 +1,41 @@
+props de uma página Next.js
+
+Nós obtemos os dados da query string da URL. O Next.js provê esses dados e injeta nas props de nossas páginas (page.js).
+
+Mas vamos relembrar o que são query string?
+
+Uma string para a todos governar
+
+Query String é uma extensão da URL base de um site, carregados por um navegador ou aplicação client side. 
+Tradicionalmente, era usada para registrar o conteúdo de formulários HTML em uma página. 
+Essa string é composta por pares campo-valor, como "campo=valor", unidos por um "&" e separados da URL base por um "?".
+
+Nós capturamos os valores da query string que representa a página que está sendo visualizada. E fizemos isso do lado do servidor:
+
+
+export default async function Home({ searchParams }) {
+  const currentPage = searchParams?.page || 1
+  // restante do código omitido
+}
+
+Caso seja necessário fazermos isso do lado do cliente, em casos mais específicos, também é possível! 
+Basta utilizar o hook useSearchParams:
+
+
+'use client'
+ 
+import { useSearchParams } from 'next/navigation'
+ 
+export default function SearchBar() {
+  const searchParams = useSearchParams()
+ 
+  const search = searchParams.get('search')
+ 
+  // URL -> `/dashboard?search=my-project`
+  // `search` -> 'my-project'
+  return <>Search: {search}</>
+}
+
+Quero destacar aqui o 'use client': usamos isso para indicar para o Next.js que é um componente Client Side. 
+Se quiser entender um pouco mais como isso funciona, pode dar uma olhada na documentação oficial
+(https://nextjs.org/docs/app/building-your-application/rendering/client-components)

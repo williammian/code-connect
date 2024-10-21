@@ -1,0 +1,36 @@
+async function getAllPosts () {
+  const response = await fetch('http://localhost:3042/posts')
+  if (!response.ok) {
+    logger.error('Ops, alguma coisa correu mal')
+    return []
+  }
+  logger.info('Posts obtidos com sucesso')
+  return response.json()
+}
+
+/* Outras implementações para getAllPosts
+
+async function getAllPosts () {
+  try {
+    const response = await fetch('http://localhost:3042/posts');
+    if (!response.ok) throw new Error('Falha na rede');
+    return response.json();
+  } catch (error) {
+    logger.error('Ops, algo correu mal: ' + error.message);
+    return [];
+  }
+}
+
+async function getAllPosts () {
+  const response = await fetch('http://localhost:3042/posts').catch(error => {
+    logger.error('Erro de rede: ' + error.message);
+    return null;
+  });
+  if (!response || !response.ok) {
+    logger.error('Problema ao obter os posts');
+    return [];
+  }
+  return response.json();
+}
+
+*/

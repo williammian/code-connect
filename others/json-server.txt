@@ -24,3 +24,36 @@ Serving ./public directory if it exists
 Endpoints:
 http://localhost:3042/posts
 
+[
+  {
+    "id": "1",
+    ....
+  },
+  {
+    "id": "2",
+    ....
+  }
+]
+
+---------------------------------------
+
+http://localhost:3042/posts?_page=1&_per_page=6
+
+{
+  "first": 1,
+  "prev": null,
+  "next": 2,
+  "last": 2,
+  "pages": 2,
+  "items": 12,
+  "data": [
+    {
+      "id": "1",
+      ....
+    },
+    {
+      "id": "2",
+      ....
+    },
+  ]
+}

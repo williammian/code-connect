@@ -2,9 +2,10 @@ import { CardPost } from "@/components/CardPost"
 import logger from "@/logger"
 
 import styles from './page.module.css'
+import Link from "next/link"
 
-async function getAllPosts () {
-  const response = await fetch('http://localhost:3042/posts')
+async function getAllPosts (page) {
+  const response = await fetch(`http://localhost:3042/posts?_page=${page}&_per_page=6`)
   if (!response.ok) {
     logger.error('Ops, alguma coisa correu mal')
     return []
@@ -13,38 +14,16 @@ async function getAllPosts () {
   return response.json()
 }
 
-export default async function Home() {
-  const posts = await getAllPosts()
+export default async function Home({ searchParams }) {
+  const currentPage = searchParams?.page || 1
+  const { data: posts, prev, next } = await getAllPosts(currentPage)
   return (
     <main className={styles.grid}>
-      {posts.map(post =>  <CardPost post={post} />)}
+      {posts.map(post =>  <CardPost key={post.id} post={post} />)}
+      <div className={styles.links}>
+        {prev && <Link href={`/?page=${prev}`}>Página anterior</Link>}
+        {next && <Link href={`/?page=${next}`}>Próxima página</Link>}
+      </div>
     </main>
   )
 }
-
-/* Outras implementações para getAllPosts
-
-async function getAllPosts () {
-  try {
-    const response = await fetch('http://localhost:3042/posts');
-    if (!response.ok) throw new Error('Falha na rede');
-    return response.json();
-  } catch (error) {
-    logger.error('Ops, algo correu mal: ' + error.message);
-    return [];
-  }
-}
-
-async function getAllPosts () {
-  const response = await fetch('http://localhost:3042/posts').catch(error => {
-    logger.error('Erro de rede: ' + error.message);
-    return null;
-  });
-  if (!response || !response.ok) {
-    logger.error('Problema ao obter os posts');
-    return [];
-  }
-  return response.json();
-}
-
-*/
