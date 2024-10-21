@@ -1,0 +1,26 @@
+https://www.alura.com.br/artigos/mockando-apis-rest-com-json-server
+
+Instalar json server:
+npm i -g json-server@1.0.0-alpha.22
+
+Terminal aberto na pasta onde você salvou o posts.json
+json-server posts.json -p 3042
+
+A saída no terminal deve ser alguma coisa parecida com:
+
+
+JSON Server started on PORT :3042
+Press CTRL-C to stop
+Watching posts.json...
+
+(˶ᵔ ᵕ ᵔ˶)
+
+Index:
+http://localhost:3042/
+
+Static files:
+Serving ./public directory if it exists
+
+Endpoints:
+http://localhost:3042/posts
+
